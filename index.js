@@ -14,7 +14,7 @@ program
     .parse(process.argv);
 
 function mock(text, font, fontname) {
-    font = path.resolve(__dirname, font);
+    font = path.resolve(process.cwd(), font);
     return `
     <style>
     @font-face {
@@ -47,7 +47,7 @@ if (
 const html = mock(program.text, program.font, program.name);
 
 compressWebFont([{
-    path: __dirname,
+    path: process.cwd(),
     contents: html
 }], {});
 
